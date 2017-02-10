@@ -1,7 +1,7 @@
-﻿import reader
+﻿import vsproj
 
 filepaths = []
-vs_xml = reader.Open('Tests/Data/test.vcxproj')
-reader.Purge(vs_xml)
-reader.Append_group(vs_xml, filepaths)
-reader.Save(vs_xml, 'Tests/Data/out.vcxproj')
+vs_xml = vsproj.Open('Tests/Data/test.vcxproj')
+vsproj.Purge(vs_xml)
+vsproj.Append_group(vs_xml, filepaths)
+vsproj.Save(vs_xml, 'Tests/Data/out.vcxproj')
