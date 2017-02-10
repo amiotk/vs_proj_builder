@@ -7,26 +7,22 @@ def Open(filename):
 
 	return soup
 
-# Scans through the xml soup structure and remove existing C/C++ source and 
+# Scans through the xml soup structure and remove existing source and 
 # header files.
 def Purge(file):
-	# Remove source files paths
-	for tag in file.findAll("ClCompile"):
-		if(tag.get("Include")):
-			print "Removing " + tag["Include"]
-			tag.decompose()
-
-	# Remove include files paths
-	for tag in file.findAll("ClInclude"):
-		if(tag.get("Include")):
-			print "Removing " + tag["Include"]
-			tag.decompose()
+	# Remove source files tags
+	tags = ["ClCompile", "ClInclude", "None", "Text"]
+	for tag in tags:
+		for t in file.findAll(tag):
+			if(t.get("Include")):
+				print "Removing " + t["Include"]
+				t.decompose()
 
 	# Removing empty groups
-	for tag in file.findAll("ItemGroup"):
-		if not tag.childs and not tag.attrs:
+	for t in file.findAll("ItemGroup"):
+		if not t.childs and not tag.attrs:
 			print "Removing an empty ItemGroup"
-			tag.decompose()
+			t.decompose()
 
 # Adds new files paths to the xml structure.
 def Append_group(file, filepaths):

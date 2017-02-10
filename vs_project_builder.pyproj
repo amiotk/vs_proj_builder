@@ -34,7 +34,7 @@
     <Folder Include="Tests\Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sources\reader.py" />
+    <Compile Include="Sources\vsproj.py" />
     <Compile Include="Sources\vs_project_builder.py" />
   </ItemGroup>
   <ItemGroup>
